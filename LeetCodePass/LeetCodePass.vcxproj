@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MediumQ.h" />
     <ClInclude Include="QHeader.h" />
     <ClInclude Include="SimpleQ.h" />
     <ClInclude Include="stdafx.h" />
@@ -154,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="JsonCPP.cpp" />
     <ClCompile Include="LeetCodePass.cpp" />
+    <ClCompile Include="MediumQ.cpp" />
     <ClCompile Include="SimpleQ.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "SimpleQ.h"
+#include "MediumQ.h"
 #include "Tools.h"
 
 int main()
