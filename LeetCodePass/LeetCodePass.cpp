@@ -10,12 +10,16 @@ int main()
 {
 	string strFilePath = "C:/Users/aryay/Desktop/Data.txt";
 
-	vector<int> nums;
-	readStream(strFilePath, nums);
-	string s = "bbbcccdddaaa";
+	vector<vector<int>> nums;
+	int length = 0;
+	readStream(strFilePath, nums, length);
+// 	vector<int> nums;
+// 	readStream(strFilePath, nums);
+// 	string s = "bbbcccdddaaa";
 
 	SimpleQ Spl;
-	Spl.numberOfLines(nums, s);
+	Spl.maximumWealth(nums);
+// 	Spl.numberOfLines(nums, s);
 
 	system("pause");
     return 0;
