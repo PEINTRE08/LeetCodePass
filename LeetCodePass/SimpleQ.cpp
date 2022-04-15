@@ -70,3 +70,68 @@ int SimpleQ::maximumWealth(vector<vector<int>>& accounts) {
 	}
 	return nMaxW;
 }
+
+/*
+ *	Question : 颠倒二进制位
+ *	颠倒给定的 32 位无符号整数的二进制位。
+ *
+ *	Date	 : [ 2022/04/15 15:23:10 ]
+ */
+/*	与或（^）：使特定位翻转。将要翻转的位与1异或运算，如翻转1010的1:0位：1010^0011=1001
+ *	位运算分治
+ *	const uint32_t M1 = 0x55555555; // 01010101010101010101010101010101
+ *	const uint32_t M2 = 0x33333333; // 00110011001100110011001100110011
+ *	const uint32_t M4 = 0x0f0f0f0f; // 00001111000011110000111100001111
+ *	const uint32_t M8 = 0x00ff00ff; // 00000000111111110000000011111111
+ *	 n = n >> 1 & M1 | (n & M1) << 1;
+ *	 n = n >> 2 & M2 | (n & M2) << 2;
+ *	 n = n >> 4 & M4 | (n & M4) << 4;
+ *	 n = n >> 8 & M8 | (n & M8) << 8;
+ *	 return n >> 16 | n << 16;
+ */
+uint32_t SimpleQ::reverseBits(uint32_t n) {
+	int i = 1;
+	uint32_t ans = 0;
+	int nindex = 0;
+	while (nindex < 32)
+	{
+		ans = ans | (n & i);
+		if (nindex < 31)
+		{
+			n >>= 1;
+			ans <<= 1;
+		}
+		nindex++;
+	}
+	return ans;
+}
+
+/*
+ *	Question : 位1的个数
+ *	编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数（也被称为汉明重量）。
+ *
+ *	Date	 : [ 2022/04/15 16:03:45 ]
+ */
+/*
+ *	// 计算32位二进制的汉明重量
+ *	int32_t swar(int32_t i)
+ *	{
+ *		i = (i & 0x55555555) + ((i >> 1) & 0x55555555);
+ *		i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
+ *		i = (i & 0x0F0F0F0F) + ((i >> 4) & 0x0F0F0F0F);
+ *		i = (i * (0x01010101) >> 24);
+ *		return i
+ *	}
+ */
+int SimpleQ::hammingWeight(uint32_t n) {
+	int ans = 0;
+	for (int i = 0; i < 32 && n > 0; i++)
+	{
+		if (n & 1 == 1)
+		{
+			ans++;
+		}
+		n >>= 1;
+	}
+	return ans;
+}
