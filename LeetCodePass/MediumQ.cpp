@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "MediumQ.h"
 
 
@@ -12,13 +12,13 @@ MediumQ::~MediumQ()
 
 /*
  *	Question : 
- *	ÊµÏÖRandomizedSet Àà£º
+ *	å®ç°RandomizedSet ç±»ï¼š
  *
- *	RandomizedSet() ³õÊ¼»¯ RandomizedSet ¶ÔÏó
- *	bool insert(int val) µ±ÔªËØ val ²»´æÔÚÊ±£¬Ïò¼¯ºÏÖĞ²åÈë¸ÃÏî£¬²¢·µ»Ø true £»·ñÔò£¬·µ»Ø false ¡£
- *	bool remove(int val) µ±ÔªËØ val ´æÔÚÊ±£¬´Ó¼¯ºÏÖĞÒÆ³ı¸ÃÏî£¬²¢·µ»Ø true £»·ñÔò£¬·µ»Ø false ¡£
- *	int getRandom() Ëæ»ú·µ»ØÏÖÓĞ¼¯ºÏÖĞµÄÒ»Ïî£¨²âÊÔÓÃÀı±£Ö¤µ÷ÓÃ´Ë·½·¨Ê±¼¯ºÏÖĞÖÁÉÙ´æÔÚÒ»¸öÔªËØ£©¡£Ã¿¸öÔªËØÓ¦¸ÃÓĞ ÏàÍ¬µÄ¸ÅÂÊ ±»·µ»Ø¡£
- *	Äã±ØĞëÊµÏÖÀàµÄËùÓĞº¯Êı£¬²¢Âú×ãÃ¿¸öº¯ÊıµÄ Æ½¾ù Ê±¼ä¸´ÔÓ¶ÈÎª O(1) ¡£
+ *	RandomizedSet() åˆå§‹åŒ– RandomizedSet å¯¹è±¡
+ *	bool insert(int val) å½“å…ƒç´  val ä¸å­˜åœ¨æ—¶ï¼Œå‘é›†åˆä¸­æ’å…¥è¯¥é¡¹ï¼Œå¹¶è¿”å› true ï¼›å¦åˆ™ï¼Œè¿”å› false ã€‚
+ *	bool remove(int val) å½“å…ƒç´  val å­˜åœ¨æ—¶ï¼Œä»é›†åˆä¸­ç§»é™¤è¯¥é¡¹ï¼Œå¹¶è¿”å› true ï¼›å¦åˆ™ï¼Œè¿”å› false ã€‚
+ *	int getRandom() éšæœºè¿”å›ç°æœ‰é›†åˆä¸­çš„ä¸€é¡¹ï¼ˆæµ‹è¯•ç”¨ä¾‹ä¿è¯è°ƒç”¨æ­¤æ–¹æ³•æ—¶é›†åˆä¸­è‡³å°‘å­˜åœ¨ä¸€ä¸ªå…ƒç´ ï¼‰ã€‚æ¯ä¸ªå…ƒç´ åº”è¯¥æœ‰ ç›¸åŒçš„æ¦‚ç‡ è¢«è¿”å›ã€‚
+ *	ä½ å¿…é¡»å®ç°ç±»çš„æ‰€æœ‰å‡½æ•°ï¼Œå¹¶æ»¡è¶³æ¯ä¸ªå‡½æ•°çš„ å¹³å‡ æ—¶é—´å¤æ‚åº¦ä¸º O(1) ã€‚
  *
  *	Date	 : [ 2022/04/13 14:44:38 ]
  */
@@ -59,3 +59,101 @@ private:
 	unordered_map<int, int> mp;
 	vector<int> vec;
 };
+
+/**
+* // This is the interface that allows for creating nested lists.
+* // You should not implement it, or speculate about its implementation
+* class NestedInteger {
+*   public:
+*     // Constructor initializes an empty nested list.
+*     NestedInteger();
+*
+*     // Constructor initializes a single integer.
+*     NestedInteger(int value);
+*
+*     // Return true if this NestedInteger holds a single integer, rather than a nested list.
+*     bool isInteger() const;
+*
+*     // Return the single integer that this NestedInteger holds, if it holds a single integer
+*     // The result is undefined if this NestedInteger holds a nested list
+*     int getInteger() const;
+*
+*     // Set this NestedInteger to hold a single integer.
+*     void setInteger(int value);
+*
+*     // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+*     void add(const NestedInteger &ni);
+*
+*     // Return the nested list that this NestedInteger holds, if it holds a nested list
+*     // The result is undefined if this NestedInteger holds a single integer
+*     const vector<NestedInteger> &getList() const;
+* };
+*/
+/*
+ *	Question : è¿·ä½ è¯­æ³•åˆ†æå™¨
+ *	ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸² s è¡¨ç¤ºä¸€ä¸ªæ•´æ•°åµŒå¥—åˆ—è¡¨ï¼Œå®ç°ä¸€ä¸ªè§£æå®ƒçš„è¯­æ³•åˆ†æå™¨å¹¶è¿”å›è§£æçš„ç»“æœÂ NestedInteger ã€‚
+ *	åˆ—è¡¨ä¸­çš„æ¯ä¸ªå…ƒç´ åªå¯èƒ½æ˜¯æ•´æ•°æˆ–æ•´æ•°åµŒå¥—åˆ—è¡¨
+ *
+ *	Date	 : [ 2022/04/15 13:41:37 ]
+ */
+NestedInteger MediumQ::deserialize(string s) {
+	NestedInteger ans;
+	int nindex = 0;
+	function<void(NestedInteger&)> fun = [&](NestedInteger &list)
+	{
+		string subs = "";
+		int num = 0;
+		while (nindex < s.length())
+		{
+			if (s[nindex] == ']')
+			{
+				if (subs == "")
+				{
+					return;
+				}
+				NestedInteger child;
+				num = stoi(subs);
+				child.setInteger(num);
+				subs = "";
+				list.add(child);
+				return;
+			}
+			if (s[nindex] == '[')
+			{
+				NestedInteger child;
+				nindex++;
+				fun(child);
+				list.add(child);
+			}
+			else if (s[nindex] == ',')
+			{
+				if (subs == "")
+				{
+					nindex++;
+					continue;
+				}
+				NestedInteger child;
+				num = stoi(subs);
+				child.setInteger(num);
+				subs = "";
+				list.add(child);
+			}
+			else
+			{
+				subs += s[nindex];
+			}
+			nindex++;
+		}
+	};
+
+	if (s[nindex] != '[')
+	{
+		ans.setInteger(stoi(s));
+	}
+	else
+	{
+		nindex++;
+		fun(ans);
+	}
+	return ans;
+}

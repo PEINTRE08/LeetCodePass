@@ -10,17 +10,19 @@ int main()
 {
 	string strFilePath = "C:/Users/aryay/Desktop/Data.txt";
 
-	vector<vector<int>> nums;
-	int length = 0;
-	readStream(strFilePath, nums, length);
+// 	vector<vector<int>> nums;
+// 	int length = 0;
+// 	readStream(strFilePath, nums, length);
 // 	vector<int> nums;
 // 	readStream(strFilePath, nums);
-// 	string s = "bbbcccdddaaa";
+	string s = "[-324,[552],223]";
 
-	SimpleQ Spl;
-	Spl.maximumWealth(nums);
+// 	SimpleQ Spl;
+// 	Spl.maximumWealth(nums);
 // 	Spl.numberOfLines(nums, s);
 
+	MediumQ Mdm;
+	Mdm.deserialize(s);
 	system("pause");
     return 0;
 }

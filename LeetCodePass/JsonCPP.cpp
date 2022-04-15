@@ -1528,7 +1528,7 @@ bool isPalindrome(string s) {
 	string str;
 	for (auto ch : s)
 	{
-		if (isalnum(ch))
+		if (isalnum(ch)) // isalnum - Check if character is alphanumeric
 		{
 			str += tolower(ch);
 		}
