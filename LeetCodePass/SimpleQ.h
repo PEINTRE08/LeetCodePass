@@ -10,5 +10,6 @@ public:
 	int maximumWealth(vector<vector<int>>& accounts);
 	uint32_t reverseBits(uint32_t n);
 	int hammingWeight(uint32_t n);
+	string mostCommonWord(string paragraph, vector<string>& banned);
 };
 

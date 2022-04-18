@@ -11,17 +11,17 @@ int main()
 	string strFilePath = "C:/Users/aryay/Desktop/Data.txt";
 
 // 	vector<vector<int>> nums;
+// 	vector<int> nums;
+	vector<string> s;
+	s.push_back("hit");
 // 	int length = 0;
 // 	readStream(strFilePath, nums, length);
-// 	vector<int> nums;
 // 	readStream(strFilePath, nums);
 // 	string s = "[-324,[552],223]";
-	uint32_t n = 4294967293;
+// 	uint32_t n = 4294967293;
 
 	SimpleQ Spl;
-	Spl.reverseBits(n);
-// 	Spl.maximumWealth(nums);
-// 	Spl.numberOfLines(nums, s);
+	Spl.mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit", s);
 
 // 	MediumQ Mdm;
 // 	Mdm.deserialize(s);
