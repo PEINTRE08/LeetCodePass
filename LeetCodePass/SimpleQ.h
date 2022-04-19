@@ -11,5 +11,6 @@ public:
 	uint32_t reverseBits(uint32_t n);
 	int hammingWeight(uint32_t n);
 	string mostCommonWord(string paragraph, vector<string>& banned);
+	vector<int> shortestToChar(string s, char c);
 };
 

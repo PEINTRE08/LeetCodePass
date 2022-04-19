@@ -12,8 +12,8 @@ int main()
 
 // 	vector<vector<int>> nums;
 // 	vector<int> nums;
-	vector<string> s;
-	s.push_back("hit");
+// 	vector<string> s;
+// 	s.push_back("hit");
 // 	int length = 0;
 // 	readStream(strFilePath, nums, length);
 // 	readStream(strFilePath, nums);
@@ -21,7 +21,7 @@ int main()
 // 	uint32_t n = 4294967293;
 
 	SimpleQ Spl;
-	Spl.mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit", s);
+	Spl.shortestToChar("loveleetcode", 'e');
 
 // 	MediumQ Mdm;
 // 	Mdm.deserialize(s);

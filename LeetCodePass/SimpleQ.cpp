@@ -177,3 +177,51 @@ string SimpleQ::mostCommonWord(string paragraph, vector<string>& banned) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 字符的最短距离
+ *	给你一个字符串 s 和一个字符 c ，且 c 是 s 中出现过的字符。
+ *	返回一个整数数组 answer ，其中 answer.length == s.length 且 answer[i] 是 s 中从下标 i 到离它 最近 的字符 c 的 距离 。
+ *	两个下标 i 和 j 之间的 距离 为 abs(i - j) ，其中 abs 是绝对值函数。
+ *
+ *	Date	 : [ 2022/04/19 14:59:53 ]
+ */
+vector<int> SimpleQ::shortestToChar(string s, char c) {
+	int nlen = s.length();
+	vector<int> answer(nlen, 0);
+	vector<int> vec;
+	for (int i = 0; i < nlen; i++)
+	{
+		if (s[i] == c)
+		{
+			vec.push_back(i);
+		}
+	}
+	for (int i = 0, k = 0; i < vec.back() && k < vec.size(); i++)
+	{
+		if (i == vec[k])
+		{
+			k++;
+			continue;
+		}
+		answer[i] = abs(vec[k] - i);
+	}
+	for (int i = nlen - 1, k = vec.size() - 1; i >= 0 && k >= 0; i--)
+	{
+		if (i == vec[k])
+		{
+			k--;
+			continue;
+		}
+		if (k == vec.size() - 1)
+		{
+			answer[i] = abs(vec[k] - i);
+		}
+		else
+		{
+			answer[i] = abs(vec[k] - i) < answer[i] ? abs(vec[k] - i) : answer[i];
+		}
+	}
+	return answer;
+}
+

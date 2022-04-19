@@ -35,4 +35,5 @@ public:
 	MediumQ();
 	~MediumQ();
 	NestedInteger deserialize(string s);
+	vector<int> lexicalOrder(int n);
 };
