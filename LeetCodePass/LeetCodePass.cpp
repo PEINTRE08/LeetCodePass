@@ -17,11 +17,11 @@ int main()
 // 	int length = 0;
 // 	readStream(strFilePath, nums, length);
 // 	readStream(strFilePath, nums);
-// 	string s = "[-324,[552],223]";
+	string s = "I speak Goat Latin";
 // 	uint32_t n = 4294967293;
 
 	SimpleQ Spl;
-	Spl.shortestToChar("loveleetcode", 'e');
+	Spl.toGoatLatin(s);
 
 // 	MediumQ Mdm;
 // 	Mdm.deserialize(s);
