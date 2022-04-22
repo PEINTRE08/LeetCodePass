@@ -36,4 +36,5 @@ public:
 	~MediumQ();
 	NestedInteger deserialize(string s);
 	vector<int> lexicalOrder(int n);
+	int maxRotateFunction(vector<int>& nums);
 };
