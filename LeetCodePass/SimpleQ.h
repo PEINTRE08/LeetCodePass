@@ -13,5 +13,6 @@ public:
 	string mostCommonWord(string paragraph, vector<string>& banned);
 	vector<int> shortestToChar(string s, char c);
 	string toGoatLatin(string sentence);
+	int binaryGap(int n);
 };
 
