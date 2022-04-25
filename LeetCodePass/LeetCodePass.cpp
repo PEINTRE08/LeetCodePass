@@ -11,18 +11,20 @@ int main()
 	string strFilePath = "C:/Users/aryay/Desktop/Data.txt";
 
 // 	vector<vector<int>> nums;
-// 	vector<int> nums;
+	vector<int> nums;
 // 	vector<string> s;
 // 	s.push_back("hit");
-	int length = 22;
+// 	int length = 22;
 // 	readStream(strFilePath, nums, length);
-// 	readStream(strFilePath, nums);
+	readStream(strFilePath, nums);
 // 	string s = "I speak Goat Latin";
 // 	uint32_t n = 4294967293;
 
-	SimpleQ Spl;
-	Spl.binaryGap(length);
-
+// 	SimpleQ Spl;
+	Solution s(nums);
+	s.pick(3);
+	s.pick(1);
+	s.pick(3);
 // 	MediumQ Mdm;
 
 	system("pause");

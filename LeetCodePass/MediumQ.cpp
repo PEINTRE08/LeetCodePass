@@ -225,3 +225,4 @@ int MediumQ::maxRotateFunction(vector<int>& nums) {
 	}
 	return ans;
 }
+
