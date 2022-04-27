@@ -226,3 +226,135 @@ int MediumQ::maxRotateFunction(vector<int>& nums) {
 	return ans;
 }
 
+/*
+ *	Question : 太平洋大西洋水流问题
+ *	有一个 m × n 的矩形岛屿，与 太平洋 和 大西洋 相邻。
+ *	 “太平洋” 处于大陆的左边界和上边界，而 “大西洋” 处于大陆的右边界和下边界。
+ *	这个岛被分割成一个由若干方形单元格组成的网格。
+ *	给定一个 m x n 的整数矩阵 heights ， heights[r][c] 表示坐标 (r, c) 上单元格 高于海平面的高度 。
+ *	岛上雨水较多，如果相邻单元格的高度 小于或等于 当前单元格的高度，雨水可以直接向北、南、东、西流向相邻单元格。
+ *	水可以从海洋附近的任何单元格流入海洋。
+ *	返回 网格坐标 result 的 2D列表 ，其中 result[i] = [ri, ci] 表示雨水可以从单元格 (ri, ci) 流向 太平洋和大西洋 。
+ *
+ *	Date	 : [ 2022/04/27 14:00:22 ]
+ */
+// ga
+vector<vector<int>> MediumQ::pacificAtlantic(vector<vector<int>>& heights) {
+	vector<vector<int>> result;
+	int m = heights.size(), n = heights[0].size();
+	stack<vector<int>> s;
+	vector<vector<bool>> leaf(m, vector<bool>(n, false));
+	for (int i = 0; i < m; i++)
+	{
+		vector<int> temp;
+		temp.push_back(i);
+		temp.push_back(0);
+		s.push(temp);
+		leaf[i][0] = true;
+	}
+	for (int i = 1; i < n; i++)
+	{
+		vector<int> temp;
+		temp.push_back(0);
+		temp.push_back(i);
+		s.push(temp);
+		leaf[0][i] = true;
+	}
+	while (s.size() > 0)
+	{
+		vector<int> temp = s.top();
+		s.pop();
+		int x = temp[0], y = temp[1];
+		if (x + 1 < m && (heights[x][y] <= heights[x + 1][y]))
+		{
+			if (heights[x][y] == heights[x + 1][y])
+			{
+				leaf[x][y] = true;
+			}
+			vector<int> tempp;
+			tempp.push_back(x + 1);
+			tempp.push_back(y);
+			s.push(tempp);
+		}
+		if (y + 1 < n && (heights[x][y] <= heights[x][y + 1]))
+		{
+			if (heights[x][y] == heights[x][y + 1])
+			{
+				leaf[x][y] = true;
+			}
+			vector<int> tempp;
+			tempp.push_back(x);
+			tempp.push_back(y + 1);
+			s.push(tempp);
+			continue;
+		}
+		leaf[x][y] = true;
+	}
+	for (int i = 0; i < m; i++)
+	{
+		vector<int> temp;
+		temp.push_back(i);
+		temp.push_back(n - 1);
+		s.push(temp);
+		if (leaf[i][n - 1] == true)
+		{
+			result.push_back(temp);
+			leaf[i][n - 1] = false;
+		}
+	}
+	for (int i = 0; i < n - 1; i++)
+	{
+		vector<int> temp;
+		temp.push_back(m - 1);
+		temp.push_back(i);
+		s.push(temp);
+		if (leaf[m - 1][i] == true)
+		{
+			result.push_back(temp);
+			leaf[m - 1][i] = false;
+		}
+	}
+	while (s.size() > 0)
+	{
+		vector<int> temp = s.top();
+		s.pop();
+		int x = temp[0], y = temp[1];
+		if (x -	1 >= 0 && (heights[x][y] <= heights[x - 1][y]))
+		{
+			if (heights[x][y] == heights[x - 1][y])
+			{
+				if (leaf[x][y] == true)
+				{
+					result.push_back(temp);
+					leaf[x][y] = false;
+				}
+			}
+			vector<int> tempp;
+			tempp.push_back(x - 1);
+			tempp.push_back(y);
+			s.push(tempp);
+		}
+		if (y - 1 >= 0 && (heights[x][y] <= heights[x][y - 1]))
+		{
+			if (heights[x][y] == heights[x][y - 1])
+			{
+				if (leaf[x][y] == true)
+				{
+					result.push_back(temp);
+					leaf[x][y] = false;
+				}
+			}
+			vector<int> tempp;
+			tempp.push_back(x);
+			tempp.push_back(y - 1);
+			s.push(tempp);
+			continue;
+		}
+		if (leaf[x][y] == true)
+		{
+			result.push_back(temp);
+			leaf[x][y] = false;
+		}
+	}
+	return result;
+}

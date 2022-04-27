@@ -8,5 +8,6 @@
 #include <numeric>      // std::accumulate
 #include <algorithm>    // std::max
 #include <functional>	// function
+#include <stack>
 
 using namespace std;

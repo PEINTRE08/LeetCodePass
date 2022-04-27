@@ -70,4 +70,5 @@ public:
 	NestedInteger deserialize(string s);
 	vector<int> lexicalOrder(int n);
 	int maxRotateFunction(vector<int>& nums);
+	vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights);
 };
