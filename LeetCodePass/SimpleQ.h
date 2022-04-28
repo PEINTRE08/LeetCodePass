@@ -61,5 +61,6 @@ public:
 	int binaryGap(int n);
 	int projectionArea(vector<vector<int>>& grid);
 	vector<int> sortArrayByParity(vector<int>& nums);
+	bool containsDuplicate(vector<int>& nums);
 };
 
