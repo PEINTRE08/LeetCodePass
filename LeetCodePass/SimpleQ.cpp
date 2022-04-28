@@ -337,3 +337,28 @@ int SimpleQ::projectionArea(vector<vector<int>>& grid) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 按奇偶排序数组
+ *	给你一个整数数组 nums，将 nums 中的的所有偶数元素移动到数组的前面，后跟所有奇数元素。
+ *
+ *	Date	 : [ 2022/04/28 09:22:05 ]
+ */
+vector<int> SimpleQ::sortArrayByParity(vector<int>& nums) {
+	int nodd = -1;
+	for (int i = 0; i < nums.size(); i++)
+	{
+		if (nums[i] % 2 != 0 && nodd == -1)
+		{
+			nodd = i;
+		}
+		if (nums[i] % 2 == 0 && nodd != -1)
+		{
+			int temp = nums[i];
+			nums[i] = nums[nodd];
+			nums[nodd] = temp;
+			nodd++;
+		}
+	}
+	return nums;
+}
