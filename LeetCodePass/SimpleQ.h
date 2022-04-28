@@ -62,5 +62,7 @@ public:
 	int projectionArea(vector<vector<int>>& grid);
 	vector<int> sortArrayByParity(vector<int>& nums);
 	bool containsDuplicate(vector<int>& nums);
+	int findRepeatNumber(vector<int>& nums);
+	bool isUnique(string astr);
 };
 

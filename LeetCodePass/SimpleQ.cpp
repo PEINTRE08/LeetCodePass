@@ -381,3 +381,42 @@ bool SimpleQ::containsDuplicate(vector<int>& nums) {
 	}
 	return false;
 }
+
+/*
+ *	Question : 剑指 Offer 03. 数组中重复的数字
+ *	在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。
+ *	数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。
+ *
+ *	Date	 : [ 2022/04/28 13:33:13 ]
+ */
+int SimpleQ::findRepeatNumber(vector<int>& nums) {
+	unordered_map<int, int> mp;
+	for (auto& num : nums)
+	{
+		if (mp.count(num) > 0)
+		{
+			return num;
+		}
+		mp[num]++;
+	}
+	return -1;
+}
+
+/*
+ *	Question : 判定字符是否唯一
+ *	实现一个算法，确定一个字符串 s 的所有字符是否全都不同。
+ *
+ *	Date	 : [ 2022/04/28 14:24:23 ]
+ */
+bool SimpleQ::isUnique(string astr) {
+	unordered_map<int, int> mp;
+	for (auto& ch : astr)
+	{
+		if (mp.count(ch) > 0)
+		{
+			return false;
+		}
+		mp[ch]++;
+	}
+	return true;
+}
