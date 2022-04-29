@@ -358,3 +358,51 @@ vector<vector<int>> MediumQ::pacificAtlantic(vector<vector<int>>& heights) {
 	}
 	return result;
 }
+
+/*
+ *	Question : 建立四叉树
+ *	给你一个 n * n 矩阵 grid ，矩阵由若干 0 和 1 组成。请你用四叉树表示该矩阵 grid 。
+ *	你需要返回能表示矩阵的 四叉树 的根结点。
+ *	注意，当 isLeaf 为 False 时，你可以把 True 或者 False 赋值给节点，两种值都会被判题机制 接受 。
+ *	四叉树数据结构中，每个内部节点只有四个子节点。此外，每个节点都有两个属性：
+ *		val：储存叶子结点所代表的区域的值。1 对应 True，0 对应 False；
+ *		isLeaf: 当这个节点是一个叶子结点时为 True，如果它有 4 个子节点则为 False 。
+ *
+ *	Date	 : [ 2022/04/29 10:35:47 ]
+ */
+Node* MediumQ::construct(vector<vector<int>>& grid) {
+	int n = grid.size();
+	Node* root;
+	function<Node*(int, int, int, int)> fun = [&](int nX, int nY, int nCol, int nRow) -> Node*
+	{
+		bool bSome = true, nVal = grid[nX][nY];
+		for (int i = 0; i < nCol; i++)
+		{
+			for (int j = 0; j < nRow; j++)
+			{
+				if (grid[i + nX][j + nY] != nVal)
+				{
+					bSome = false;
+					break;
+				}
+			}
+			if (bSome == false)
+			{
+				break;
+			}
+		}
+		Node* node = new Node();
+		node->isLeaf = bSome;
+		node->val = nVal;
+		if (node->isLeaf != true)
+		{
+			node->topLeft = fun(nX, nY, nCol / 2, nRow / 2);
+			node->bottomLeft = fun(nX + (nCol / 2), nY, nCol - (nCol / 2), nRow / 2);
+			node->topRight = fun(nX, nY + (nRow / 2), nCol / 2, nRow - (nRow / 2));
+			node->bottomRight = fun(nX + (nCol / 2), nY + (nRow / 2), nCol - (nCol / 2), nRow - (nRow / 2));
+		}
+		return node;
+	};
+// 	root = fun(0, 0, n, n);
+	return root;
+}
