@@ -64,5 +64,6 @@ public:
 	bool containsDuplicate(vector<int>& nums);
 	int findRepeatNumber(vector<int>& nums);
 	bool isUnique(string astr);
+	vector<int> diStringMatch(string s);
 };
 
