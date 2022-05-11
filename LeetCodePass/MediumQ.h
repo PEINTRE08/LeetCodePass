@@ -98,11 +98,79 @@ public:
 	}
 };
 
+// Definition for a binary tree node.
+struct TreeNode {
+	int val;
+	TreeNode* left;
+	TreeNode* right;
+	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+/*
+*	Question : 序列化和反序列化二叉搜索树
+*	序列化是将数据结构或对象转换为一系列位的过程，以便它可以存储在文件或内存缓冲区中，或通过网络连接链路传输，以便稍后在同一个或另一个计算机环境中重建。
+*	设计一个算法来序列化和反序列化 二叉搜索树 。 对序列化/反序列化算法的工作方式没有限制。 您只需确保二叉搜索树可以序列化为字符串，并且可以将该字符串反序列化为最初的二叉搜索树。
+*	编码的字符串应尽可能紧凑。
+*
+*	Date	 : [ 2022/05/11 14:37:48 ]
+*/
+class Codec {
+public:
+
+	// Encodes a tree to a single string.
+	string serialize(TreeNode* root) {
+		string ans = "";
+		function<void(TreeNode*)> PreOrder = [&](TreeNode* node)
+		{
+			if (node == NULL)
+			{
+				return;
+			}
+
+			PreOrder(node->left);
+			PreOrder(node->right);
+
+			ans += to_string(node->val);
+			ans += ",";
+		};
+		PreOrder(root);
+		return ans;
+	}
+
+	// Decodes your encoded data to tree.
+	TreeNode* deserialize(string data) {
+		int nlen = data.length();
+		int nIndex = 0, nSeparate = 0;
+		stack<int> st;
+		while (nIndex < nlen)
+		{
+			nSeparate = data.find(',', nIndex);
+			s.assign(data.begin() + nIndex, data.begin() + nSeparate);
+			nIndex = nSeparate + 1;
+			st.push(stoi(s));
+		}
+		return construct(INT_MIN, INT_MAX, st);
+	}
+
+	TreeNode* construct(int lower, int upper, stack<int>& st) {
+		if (st.size() == 0 || st.top() < lower || st.top() > upper) {
+			return nullptr;
+		}
+		int val = st.top();
+		st.pop();
+		TreeNode* root = new TreeNode(val);
+		root->right = construct(val, upper, st);
+		root->left = construct(lower, val, st);
+		return root;
+	}
+};
+
 class MediumQ
 {
 	friend class NestedInteger;
 	friend class Solution;
 	friend class Node;
+	friend class Codec;
 public:
 	MediumQ();
 	~MediumQ();
