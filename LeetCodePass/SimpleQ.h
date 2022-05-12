@@ -65,5 +65,6 @@ public:
 	int findRepeatNumber(vector<int>& nums);
 	bool isUnique(string astr);
 	vector<int> diStringMatch(string s);
+	int minDeletionSize(vector<string>& strs);
 };
 

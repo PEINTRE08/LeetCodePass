@@ -372,7 +372,7 @@ vector<vector<int>> MediumQ::pacificAtlantic(vector<vector<int>>& heights) {
  */
 Node* MediumQ::construct(vector<vector<int>>& grid) {
 	int n = grid.size();
-	Node* root;
+	Node* root = NULL;
 	function<Node*(int, int, int, int)> fun = [&](int nX, int nY, int nCol, int nRow) -> Node*
 	{
 		bool bSome = true, nVal = grid[nX][nY];
