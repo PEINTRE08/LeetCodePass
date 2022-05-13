@@ -406,3 +406,40 @@ Node* MediumQ::construct(vector<vector<int>>& grid) {
 // 	root = fun(0, 0, n, n);
 	return root;
 }
+
+/*
+ *	Question : 一次编辑
+ *	字符串有三种编辑操作:插入一个字符、删除一个字符或者替换一个字符。 
+ *	给定两个字符串，编写一个函数判定它们是否只需要一次(或者零次)编辑。
+ *
+ *	Date	 : [ 2022/05/13 14:03:40 ]
+ */
+bool MediumQ::oneEditAway(string first, string second) {
+	int lenf = first.length(), lens = second.length();
+	if (abs(lenf - lens) > 1)
+	{
+		return false;
+	}
+	int nf = 0, ns = 0, ndiff = 0;
+	while (nf < lenf || ns < lens)
+	{
+		if (nf >= lenf || ns >= lens || (nf < lenf && ns < lens && first.at(nf) != second.at(ns)))
+		{
+			ndiff++;
+			if (ndiff >= 2)
+			{
+				return false;
+			}
+			if (lenf < lens)
+			{
+				nf--;
+			}
+			else if (lenf > lens)
+			{
+				ns--;
+			}
+		}
+		nf++; ns++;
+	}
+	return true;
+}

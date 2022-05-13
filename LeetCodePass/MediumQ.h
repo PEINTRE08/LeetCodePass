@@ -111,4 +111,5 @@ public:
 	int maxRotateFunction(vector<int>& nums);
 	vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights);
 	Node * construct(vector<vector<int>>& grid);
+	bool oneEditAway(string first, string second);
 };
