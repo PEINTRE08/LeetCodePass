@@ -483,3 +483,43 @@ int SimpleQ::minDeletionSize(vector<string>& strs) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 验证外星语词典
+ *	某种外星语也使用英文小写字母，但可能顺序 order 不同。字母表的顺序（order）是一些小写字母的排列。
+ *	给定一组用外星语书写的单词 words，以及其字母表的顺序 order，
+ *	只有当给定的单词在这种外星语中按字典序排列时，返回 true；否则，返回 false。
+
+ *	Date	 : [ 2022/05/17 15:56:09 ]
+ */
+bool SimpleQ::isAlienSorted(vector<string>& words, string order) {
+	unordered_map<char, int> mp;
+	for (int i = 0; i < order.length(); i++)
+	{
+		mp[order.at(i)] = i + 1;//计数应从1开始
+	}
+	for (int i = 1; i < words.size(); i++)
+	{
+		int numf = 0, nums = 0;
+		for (int j = 0; j < words.at(i).size() || j < words.at(i - 1).size(); j++)
+		{
+			if (j < words.at(i - 1).size())
+			{
+				numf += mp[words.at(i - 1).at(j)];
+			}
+			if (j < words.at(i).size())
+			{
+				nums += mp[words.at(i).at(j)];
+			}
+			if (numf < nums)
+			{
+				break;
+			}
+			if (numf > nums)
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}

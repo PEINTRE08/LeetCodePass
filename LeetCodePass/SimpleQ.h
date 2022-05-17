@@ -66,5 +66,6 @@ public:
 	bool isUnique(string astr);
 	vector<int> diStringMatch(string s);
 	int minDeletionSize(vector<string>& strs);
+	bool isAlienSorted(vector<string>& words, string order);
 };
 
