@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HardQ.h" />
     <ClInclude Include="MediumQ.h" />
     <ClInclude Include="QHeader.h" />
     <ClInclude Include="SimpleQ.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Tools.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HardQ.cpp" />
     <ClCompile Include="JsonCPP.cpp" />
     <ClCompile Include="LeetCodePass.cpp" />
     <ClCompile Include="MediumQ.cpp" />
