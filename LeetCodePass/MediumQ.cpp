@@ -443,3 +443,47 @@ bool MediumQ::oneEditAway(string first, string second) {
 	}
 	return true;
 }
+
+/*
+ *	Question : 最少移动次数使数组元素相等 II
+ *	给你一个长度为 n 的整数数组 nums ，返回使所有数组元素相等需要的最少移动数。
+ *	在一步操作中，你可以使数组中的一个元素加 1 或者减 1 。
+
+ *	Date	 : [ 2022/05/19 14:12:47 ]
+ */
+///	★★★★★
+int MediumQ::minMoves2(vector<int>& nums) {
+	function<int(vector<int>, int, int)> partition = [&](vector<int>& num, int left, int right) -> int
+	{
+		int x = nums[right], i = left - 1;
+		for (int j = left; j < right; ++j) {
+			if (nums[j] <= x) {
+				swap(nums[++i], nums[j]);
+			}
+		}
+		swap(nums[i + 1], nums[right]);
+		return i + 1;
+	};
+	function<int(vector<int>, int, int)> randomSelect = [&](vector<int>& num, int left, int right) -> int
+	{
+		int index = rand() % (right - left + 1) + left;
+		swap(num.at(index), num.at(right));
+		return partition(num, left, right);
+	};
+	function<int(vector<int>, int, int, int)> quickSelect = [&](vector<int>& num, int left, int right, int k) -> int
+	{
+		int q = randomSelect(num, left, right);
+		if (q == k)
+		{
+			return num[q];
+		}
+		return q < k ? quickSelect(num, q + 1, right, k) : quickSelect(num, left, q - 1, k);
+	};
+
+	srand(time(0));
+	int n = nums.size(), x = quickSelect(nums, 0, n - 1, n / 2), ret = 0;
+	for (int i = 0; i < n; ++i) {
+		ret += abs(nums[i] - x);
+	}
+	return ret;
+}
