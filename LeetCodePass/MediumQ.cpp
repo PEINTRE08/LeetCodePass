@@ -487,3 +487,41 @@ int MediumQ::minMoves2(vector<int>& nums) {
 	}
 	return ret;
 }
+
+/*
+ *	Question : Find Right Interval
+ *	You are given an array of intervals, where intervals[i] = [starti, endi] and each starti is unique.
+ *	The right interval for an interval i is an interval j such that startj >= endi and startj is minimized. 
+ *	Note that i may equal j.
+ *	Return an array of right interval indices for each interval i. 
+ *	If no right interval exists for interval i, then put -1 at index i.
+ *
+ *	Date	 : [ 2022/05/20 14:14:38 ]
+ */
+vector<int> MediumQ::findRightInterval(vector<vector<int>>& intervals) {
+	unordered_map<int, int> mp;
+	vector<int> ans(intervals.size(), -1);
+	int nMax = intervals.at(0).at(1);
+	for (int i = 0; i < intervals.size(); i++)
+	{
+		int num = intervals.at(i).at(0);
+		if (mp.count(num) <= 0)
+		{
+			mp[num] = i;
+			nMax = nMax > num ? nMax : num;
+		}
+	}
+	for (int i = 0; i < intervals.size(); i++)
+	{
+		int num = intervals.at(i).at(1);
+		for (int j = num; j <= nMax; j++)
+		{
+			if (mp.count(j) > 0)
+			{
+				ans[i] = mp[j];
+				break;
+			}
+		}
+	}
+	return ans;
+}
