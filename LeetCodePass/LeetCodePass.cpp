@@ -4,25 +4,27 @@
 #include "stdafx.h"
 #include "SimpleQ.h"
 #include "MediumQ.h"
+#include "HardQ.h"
 #include "Tools.h"
 
 int main()
 {
 	string strFilePath = "C:/Users/aryay/Desktop/Data.txt";
 
-// 	vector<vector<int>> nums;
+	vector<vector<int>> nums;
 // 	vector<int> nums;
 // 	vector<string> s;
 // 	s.push_back("hit");
-// 	int length = 0;
-// 	readStream(strFilePath, nums, length);
+	int length = 0;
+	readStream(strFilePath, nums, length);
 // 	readStream(strFilePath, nums);
 // 	string s = "I speak Goat Latin";
 // 	uint32_t n = 4294967293;
 
 // 	SimpleQ Spl;
-	MediumQ Mdm;
-	Mdm.oneEditAway("abcdefg", "abcdef");
+// 	MediumQ Mdm;
+	HardQ hard;
+	hard.cutOffTree(nums);
 
 	system("pause");
     return 0;
