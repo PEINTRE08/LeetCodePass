@@ -523,3 +523,33 @@ bool SimpleQ::isAlienSorted(vector<string>& words, string order) {
 	}
 	return true;
 }
+
+/*
+ *	Question : 单值二叉树
+ *	如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。
+ *	只有给定的树是单值二叉树时，才返回 true；否则返回 false。
+
+ *	Date	 : [ 2022/05/24 09:46:56 ]
+ */
+bool SimpleQ::isUnivalTree(TreeNode* root) {
+	function<bool(TreeNode*, int)> dps = [&](TreeNode* node, int num) -> bool
+	{
+		if (node == NULL)
+		{
+			return true;
+		}
+		if (node->val == num && dps(node->left, num) && dps(node->right, num))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	};
+	if (root == NULL)
+	{
+		return true;
+	}
+	return dps(root, root->val);
+}
