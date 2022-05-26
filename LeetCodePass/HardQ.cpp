@@ -129,3 +129,33 @@ int HardQ::cutOffTree(vector<vector<int>>& forest) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 掉落的方块
+ *	俄罗斯方块：在每个方块掉落后，你必须记录目前所有已经落稳的 方块堆叠的最高高度 。
+ *	返回一个整数数组 ans ，其中 ans[i] 表示在第 i 块方块掉落后堆叠的最高高度。
+ *
+ *	Date	 : [ 2022/05/26 14:35:53 ]
+ */
+///	★★★★★★★★★★
+vector<int> HardQ::fallingSquares(vector<vector<int>>& positions) {
+	const int len = positions.size();
+	vector<int> ans(len);
+	for (int i = 0; i < len; i++)
+	{
+		int left = positions[i][0], right = positions[i][1] + left - 1;
+		ans[i] = positions[i][1];
+		for (int j = 0; j < i; j++)
+		{
+			int jleft = positions[j][0], jright = positions[j][1] + jleft - 1;
+			if (right >= jleft && jright >= left)
+			{
+				ans[i] = max(ans[i], ans[j] + positions[i][1]);
+			}
+		}
+	}
+	for (int i = 1; i < len; i++) {
+		ans[i] = max(ans[i], ans[i - 1]);
+	}
+	return ans;
+}

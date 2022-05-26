@@ -114,4 +114,5 @@ public:
 	bool oneEditAway(string first, string second);
 	int minMoves2(vector<int>& nums);
 	vector<int> findRightInterval(vector<vector<int>>& intervals);
+	int findSubstringInWraproundString(string p);
 };
