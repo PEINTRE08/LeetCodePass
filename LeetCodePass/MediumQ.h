@@ -115,4 +115,5 @@ public:
 	int minMoves2(vector<int>& nums);
 	vector<int> findRightInterval(vector<vector<int>>& intervals);
 	int findSubstringInWraproundString(string p);
+	bool makesquare(vector<int>& matchsticks);
 };

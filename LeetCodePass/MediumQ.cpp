@@ -549,3 +549,50 @@ int MediumQ::findSubstringInWraproundString(string p) {
 	}
 	return accumulate(dp.begin(), dp.end(), 0);
 }
+
+/*
+ *	Question : 火柴拼正方形
+ *	你将得到一个整数数组 matchsticks ，其中 matchsticks[i] 是第 i 个火柴棒的长度。
+ *	你要用 所有的火柴棍 拼成一个正方形。你 不能折断 任何一根火柴棒，
+ *	但你可以把它们连在一起，而且每根火柴棒必须 使用一次 。
+ *	如果你能使这个正方形，则返回 true ，否则返回 false 。
+ *
+ *	Date	 : [ 2022/06/01 09:20:13 ]
+ */
+///	★★★★★
+bool MediumQ::makesquare(vector<int>& matchsticks) {
+	int len = matchsticks.size();
+	if (len < 4)
+	{
+		return false;
+	}
+	function<bool(vector<int>, vector<int>&, int, int)> divide = [&](vector<int> nums, vector<int>& vec, int index, int value) -> bool
+	{
+		if (index == len) 
+		{
+			return true;
+		}
+		for (int i = 0; i < vec.size(); i++) 
+		{
+			vec[i] += matchsticks[index];
+			if (vec[i] <= value && divide( matchsticks, vec, index + 1, value)) 
+			{
+				return true;
+			}
+			vec[i] -= matchsticks[index];
+		}
+		return false;
+	};
+	int edge = accumulate(matchsticks.begin(), matchsticks.end(), 0);
+	if (edge % 4 != 0)
+	{
+		return false;
+	}
+	sort(matchsticks.begin(), matchsticks.end(), greater<int>());
+	vector<int> edges(4);
+	if (divide(matchsticks, edges, 0, edge / 4))
+	{
+		return true;
+	}
+	return false;
+}
