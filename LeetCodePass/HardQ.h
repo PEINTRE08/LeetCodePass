@@ -1,5 +1,6 @@
 #pragma once
 #include "QHeader.h"
+#include "QStruct.h"
 
 class HardQ
 {

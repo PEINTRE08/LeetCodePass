@@ -148,6 +148,7 @@
     <ClInclude Include="HardQ.h" />
     <ClInclude Include="MediumQ.h" />
     <ClInclude Include="QHeader.h" />
+    <ClInclude Include="QStruct.h" />
     <ClInclude Include="SimpleQ.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />

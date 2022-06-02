@@ -596,3 +596,67 @@ bool MediumQ::makesquare(vector<int>& matchsticks) {
 	}
 	return false;
 }
+
+/*
+ *	Question : 删除二叉搜索树中的节点
+ *	给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。
+ *	返回二叉搜索树（有可能被更新）的根节点的引用。
+ *	一般来说，删除节点可分为两个步骤：
+ *	首先找到需要删除的节点；
+ *	如果找到了，删除它。
+ *
+ *	Date	 : [ 2022/06/02 13:52:56 ]
+ */
+///	★★★★★
+TreeNode* MediumQ::deleteNode(TreeNode* root, int key) {
+	TreeNode *cur = root, *curParent = nullptr;
+	while (cur && cur->val != key) {
+		curParent = cur;
+		if (cur->val > key) {
+			cur = cur->left;
+		}
+		else {
+			cur = cur->right;
+		}
+	}
+	if (!cur) {
+		return root;
+	}
+	if (!cur->left && !cur->right) {
+		cur = nullptr;
+	}
+	else if (!cur->right) {
+		cur = cur->left;
+	}
+	else if (!cur->left) {
+		cur = cur->right;
+	}
+	else {
+		TreeNode *successor = cur->right, *successorParent = cur;
+		while (successor->left) {
+			successorParent = successor;
+			successor = successor->left;
+		}
+		if (successorParent->val == cur->val) {
+			successorParent->right = successor->right;
+		}
+		else {
+			successorParent->left = successor->right;
+		}
+		successor->right = cur->right;
+		successor->left = cur->left;
+		cur = successor;
+	}
+	if (!curParent) {
+		return cur;
+	}
+	else {
+		if (curParent->left && curParent->left->val == key) {
+			curParent->left = cur;
+		}
+		else {
+			curParent->right = cur;
+		}
+		return root;
+	}
+}
