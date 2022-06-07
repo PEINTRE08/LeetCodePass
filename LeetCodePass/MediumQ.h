@@ -55,4 +55,5 @@ public:
 	int findSubstringInWraproundString(string p);
 	bool makesquare(vector<int>& matchsticks);
 	TreeNode * deleteNode(TreeNode * root, int key);
+	int minEatingSpeed(vector<int>& piles, int h);
 };
