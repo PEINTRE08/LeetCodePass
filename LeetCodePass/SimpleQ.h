@@ -69,5 +69,6 @@ public:
 	int minDeletionSize(vector<string>& strs);
 	bool isAlienSorted(vector<string>& words, string order);
 	bool isUnivalTree(TreeNode * root);
+	bool isBoomerang(vector<vector<int>>& points);
 };
 

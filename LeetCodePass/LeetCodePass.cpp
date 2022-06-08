@@ -11,19 +11,19 @@ int main()
 {
 	string strFilePath = "C:/Users/aryay/Desktop/Data.txt";
 
-// 	vector<vector<int>> nums;
-	vector<int> nums;
+	vector<vector<int>> nums;
+// 	vector<int> nums;
 // 	vector<string> s;
 // 	s.push_back("hit");
 	int length = 0;
-// 	readStream(strFilePath, nums, length);
-	readStream(strFilePath, nums);
+	readStream(strFilePath, nums, length);
+// 	readStream(strFilePath, nums);
 // 	string s = "I speak Goat Latin";
 // 	uint32_t n = 4294967293;
 
-// 	SimpleQ Spl;
-	MediumQ Mdm;
-	Mdm.makesquare(nums);
+	SimpleQ Spl;
+	Spl.isBoomerang(nums);
+// 	MediumQ Mdm;
 // 	HardQ hard;
 
 	system("pause");

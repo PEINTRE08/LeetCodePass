@@ -553,3 +553,25 @@ bool SimpleQ::isUnivalTree(TreeNode* root) {
 	}
 	return dps(root, root->val);
 }
+
+/*
+ *	Question : 有效的回旋镖
+ *	给定一个数组 points ，其中 points[i] = [xi, yi] 表示 X-Y 平面上的一个点，
+ *	如果这些点构成一个 回旋镖 则返回 true 。
+ *	回旋镖 定义为一组三个点，这些点 各不相同 且 不在一条直线上 。
+ *	
+ *	Date	 : [ 2022/06/08 13:27:46 ]
+ */
+bool SimpleQ::isBoomerang(vector<vector<int>>& points) {
+	int x1 = points[0][0], x2 = points[1][0], x3 = points[2][0];
+	int y1 = points[0][1], y2 = points[1][1], y3 = points[2][1];
+	if (x1 == x2 && y1 == y2 || x1 == x3 && y1 == y3 || x2 == x3 && y2 == y3 || x1 == x2 && x2 == x3)
+	{
+		return false;
+	}
+	if ((y1 - y2) * (x1 - x3) == (y1 - y3) * (x1 - x2))
+	{
+		return false;
+	}
+	return true;
+}

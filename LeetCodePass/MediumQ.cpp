@@ -671,6 +671,7 @@ TreeNode* MediumQ::deleteNode(TreeNode* root, int key) {
 
  *	Date	 : [ 2022/06/07 14:19:10 ]
  */
+///	★★★★★
 int MediumQ::minEatingSpeed(vector<int>& piles, int h) {
 	function<long(const vector<int>&, int)> getTime = [&](const vector<int>& piles, int speed) -> long {
 		long time = 0;
