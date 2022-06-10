@@ -352,3 +352,101 @@ string HardQ::alienOrder(vector<string>& words) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 统计不同回文子序列
+ *	给定一个字符串 s，返回 s 中不同的非空「回文子序列」个数 。
+ *	通过从 s 中删除 0 个或多个字符来获得子序列。
+ *	如果一个字符序列与它反转后的字符序列一致，那么它是「回文字符序列」。
+ *	如果有某个 i , 满足 ai != bi ，则两个序列 a1, a2, ... 和 b1, b2, ... 不同。
+ *	注意：
+ *	结果可能很大，你需要对 109 + 7 取模 。
+ *
+ *	Date	 : [ 2022/06/10 09:17:43 ]
+ */
+///	★★★★★ : dynamic / running timeout
+/*
+	public int countPalindromicSubsequences(String s) {
+        int mod = 1000000007;
+        int n = s.length();
+        int[][] dp = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            dp[i][i] = 1;
+        }
+        for (int len = 2; len <= n; len++) {
+            for (int i = 0; i + len <= n; i++) {
+                int j = i + len - 1;
+                if (s.charAt(i) == s.charAt(j)) {
+                    int left = i + 1;
+                    int right = j - 1;
+                    while (left <= right && s.charAt(left) != s.charAt(i)) {
+                        left++;
+                    }
+                    while (left <= right && s.charAt(right) != s.charAt(j)) {
+                        right--;
+                    }
+                    if (left > right) {
+                        dp[i][j] = 2 * dp[i + 1][j - 1] + 2;
+                    } else if (left == right) {
+                        dp[i][j] = 2 * dp[i + 1][j - 1] + 1;
+                    } else {
+                        dp[i][j] = 2 * dp[i + 1][j - 1] - dp[left + 1][right - 1];
+                    }
+                } else {
+                    dp[i][j] = dp[i][j - 1] + dp[i + 1][j] - dp[i + 1][j - 1];
+                }
+                dp[i][j] = (dp[i][j] >= 0) ? dp[i][j] % mod : dp[i][j] + mod;
+            }
+        }
+        return dp[0][n - 1];
+    }
+*/
+int HardQ::countPalindromicSubsequences(string s) {
+	unordered_map<string, int> mp;
+	int ans = 0;
+	int mod = 1e9 + 7;
+	function<bool(string)> isPalindromic = [&](string str) -> bool {
+		bool is_Palindromic = true;
+		int n = str.length();
+		for (int i = 0; i < n / 2; i++)
+		{
+			if (str[i] != str[n - i - 1])
+			{
+				is_Palindromic = false;
+				return is_Palindromic;
+			}
+		}
+		return is_Palindromic;
+	};
+	queue<string> q;
+	q.push(s);
+	mp[s]++;
+	while (!q.empty())
+	{
+		string temp(q.front());
+		int n = temp.length();
+		q.pop();
+		if (isPalindromic(temp))
+		{
+			ans++;
+		}
+		if (n == 1)
+		{
+			continue;
+		}
+		for (int i = 0; i < n; i++)
+		{
+			string sub = temp.substr(0, i) + temp.substr(i + 1, n - 1);
+			if (mp.count(sub) <= 0)
+			{
+				q.push(sub);
+				if (sub[0] == sub[sub.length() - 1])
+				{
+					mp[sub]++;
+				}
+			}
+		}
+		ans %= mod;
+	}
+	return ans;
+}

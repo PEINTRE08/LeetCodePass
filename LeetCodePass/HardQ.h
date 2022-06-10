@@ -11,5 +11,6 @@ public:
 	int cutOffTree(vector<vector<int>>& forest);
 	vector<int> fallingSquares(vector<vector<int>>& positions);
 	string alienOrder(vector<string>& words);
+	int countPalindromicSubsequences(string s);
 };
 

@@ -701,3 +701,4 @@ int MediumQ::minEatingSpeed(vector<int>& piles, int h) {
 	}
 	return k;
 }
+

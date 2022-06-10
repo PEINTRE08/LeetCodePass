@@ -21,10 +21,10 @@ int main()
 // 	string s = "I speak Goat Latin";
 // 	uint32_t n = 4294967293;
 
-	SimpleQ Spl;
-	Spl.isBoomerang(nums);
+// 	SimpleQ Spl;
 // 	MediumQ Mdm;
-// 	HardQ hard;
+	HardQ hard;
+	hard.countPalindromicSubsequences("abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba");
 
 	system("pause");
     return 0;
