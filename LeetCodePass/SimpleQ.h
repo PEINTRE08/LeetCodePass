@@ -70,5 +70,6 @@ public:
 	bool isAlienSorted(vector<string>& words, string order);
 	bool isUnivalTree(TreeNode * root);
 	bool isBoomerang(vector<vector<int>>& points);
+	int heightChecker(vector<int>& heights);
 };
 

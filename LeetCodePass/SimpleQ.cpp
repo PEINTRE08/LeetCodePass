@@ -575,3 +575,21 @@ bool SimpleQ::isBoomerang(vector<vector<int>>& points) {
 	}
 	return true;
 }
+
+/*
+ *	Question : 1051. 高度检查器
+ *	Date	 : [ 2022/06/13 10:36:22 ]
+ */
+int SimpleQ::heightChecker(vector<int>& heights) {
+	vector<int> expected(heights);
+	int ans = 0;
+	sort(expected.begin(), expected.end());
+	for (int i = 0; i < heights.size(); i++)
+	{
+		if (expected[i] != heights[i])
+		{
+			ans++;
+		}
+	}
+	return ans;
+}
