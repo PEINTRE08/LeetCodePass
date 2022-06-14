@@ -22,9 +22,9 @@ int main()
 // 	uint32_t n = 4294967293;
 
 // 	SimpleQ Spl;
-// 	MediumQ Mdm;
-	HardQ hard;
-	hard.countPalindromicSubsequences("abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba");
+	MediumQ Mdm;
+	Mdm.findDiagonalOrder(nums);
+// 	HardQ hard;
 
 	system("pause");
     return 0;

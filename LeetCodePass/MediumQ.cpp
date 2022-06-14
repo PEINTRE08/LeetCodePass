@@ -702,3 +702,35 @@ int MediumQ::minEatingSpeed(vector<int>& piles, int h) {
 	return k;
 }
 
+/*
+ *	Question : 498. 对角线遍历
+ *	Date	 : [ 2022/06/14 13:15:49 ]
+ */
+vector<int> MediumQ::findDiagonalOrder(vector<vector<int>>& mat) {
+	int m = mat.size(), n = mat[0].size();
+	vector<int> ans;
+	int x = 0, y = 0;
+	for (int i = 0; i < m + n - 1; i++)
+	{
+		if (i % 2)
+		{
+			x = i < n ? 0 : i - n + 1;
+			y = i < n ? i : n - 1;
+			while (x < m && y >= 0) {
+				ans.emplace_back(mat[x][y]);
+				x++; y--;
+			}
+		}
+		else
+		{
+			x = i < m ? i : m - 1;
+			y = i < m ? 0 : i - m + 1;
+			while (x >= 0 && y < n)
+			{
+				ans.emplace_back(mat[x][y]);
+				x--; y++;
+			}
+		}
+	}
+	return ans;
+}
