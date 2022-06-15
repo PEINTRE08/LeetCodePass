@@ -12,5 +12,6 @@ public:
 	vector<int> fallingSquares(vector<vector<int>>& positions);
 	string alienOrder(vector<string>& words);
 	int countPalindromicSubsequences(string s);
+	int smallestDistancePair(vector<int>& nums, int k);
 };
 
