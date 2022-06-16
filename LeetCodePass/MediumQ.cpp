@@ -734,3 +734,41 @@ vector<int> MediumQ::findDiagonalOrder(vector<vector<int>>& mat) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 532. 数组中的 k-diff 数对
+ *	Date	 : [ 2022/06/16 09:04:18 ]
+ */
+int MediumQ::findPairs(vector<int>& nums, int k) {
+	unordered_map<int, int> mp;
+	int ans = 0;
+	for (auto& num : nums)
+	{
+		mp[num]++;
+	}
+	for (auto& x : mp)
+	{
+		if (k == 0)
+		{
+			if (x.second >= 2)
+			{
+				ans++;
+			}
+			continue;
+		}
+		int left =	x.first - k, right = x.first + k;
+		if (mp.count(left) > 0)
+		{
+			ans++;
+		}
+		if (mp.count(right) > 0)
+		{
+			ans++;
+		}
+	}
+	if (k == 0)
+	{
+		return ans;
+	}
+	return ans / 2;
+}
