@@ -593,3 +593,31 @@ int SimpleQ::heightChecker(vector<int>& heights) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 1089. 复写零
+ *	Date	 : [ 2022/06/17 10:19:13 ]
+ */
+void SimpleQ::duplicateZeros(vector<int>& arr) {
+	int n = arr.size();
+	queue<int> q;
+	for (int i = 0; i < n; i++)
+	{
+		if (!q.empty())
+		{
+			q.push(arr[i]);
+			arr[i] = q.front();
+			q.pop();
+		}
+		if (arr[i] == 0) 
+		{
+			i++;
+			if (i >= n)
+			{
+				break;
+			}
+			q.push(arr[i]);
+			arr[i] = 0;
+		}
+	}
+}

@@ -71,5 +71,6 @@ public:
 	bool isUnivalTree(TreeNode * root);
 	bool isBoomerang(vector<vector<int>>& points);
 	int heightChecker(vector<int>& heights);
+	void duplicateZeros(vector<int>& arr);
 };
 
