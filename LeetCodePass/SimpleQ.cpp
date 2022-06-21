@@ -599,6 +599,35 @@ int SimpleQ::heightChecker(vector<int>& heights) {
  *	Date	 : [ 2022/06/17 10:19:13 ]
  */
 void SimpleQ::duplicateZeros(vector<int>& arr) {
+	//双指针
+	/*
+	 *	    int n = arr.size();
+	        int top = 0;
+	        int i = -1;
+	        while (top < n) {
+	            i++;
+	            if (arr[i] != 0) {
+	                top++;
+	            } else {
+	                top += 2;
+	            }
+	        }
+	        int j = n - 1;
+	        if (top == n + 1) {
+	            arr[j] = 0;
+	            j--;
+	            i--;
+	        } 
+	        while (j >= 0) {
+	            arr[j] = arr[i];
+	            j--;
+	            if (!arr[i]) {
+	                arr[j] = arr[i];
+	                j--;
+	            } 
+	            i--;
+	        }
+	 */
 	int n = arr.size();
 	queue<int> q;
 	for (int i = 0; i < n; i++)
@@ -620,4 +649,24 @@ void SimpleQ::duplicateZeros(vector<int>& arr) {
 			arr[i] = 0;
 		}
 	}
+}
+
+/*
+ *	Question : 1108. IP 地址无效化
+ *	Date	 : [ 2022/06/21 11:30:10 ]
+ */
+string SimpleQ::defangIPaddr(string address) {
+	string ans;
+	for (auto& ch : address)
+	{
+		if (ch == '.')
+		{
+			ans += "[.]";
+		}
+		else
+		{
+			ans += ch;
+		}
+	}
+	return ans;
 }
