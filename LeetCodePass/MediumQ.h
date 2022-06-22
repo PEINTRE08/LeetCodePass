@@ -114,4 +114,5 @@ public:
 	int minEatingSpeed(vector<int>& piles, int h);
 	vector<int> findDiagonalOrder(vector<vector<int>>& mat);
 	int findPairs(vector<int>& nums, int k);
+	int findBottomLeftValue(TreeNode * root);
 };

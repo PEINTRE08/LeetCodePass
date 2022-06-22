@@ -772,3 +772,42 @@ int MediumQ::findPairs(vector<int>& nums, int k) {
 	}
 	return ans / 2;
 }
+
+/*
+ *	Question : 513. 找树左下角的值
+ *	Date	 : [ 2022/06/22 10:50:18 ]
+ */
+// 可转换思路由右向左寻找
+int MediumQ::findBottomLeftValue(TreeNode* root) {
+	int ans = 0;
+	int nAdd = 0, nDiv = 0;
+	queue<TreeNode*> q;
+
+	q.push(root);
+	nDiv++;
+	ans = q.front()->val;
+
+	while (!q.empty())
+	{
+		TreeNode* t = q.front();
+		if (t->left != NULL)
+		{
+			q.push(t->left);
+			nAdd++;
+		}
+		if (t->right != NULL)
+		{
+			q.push(t->right);
+			nAdd++;
+		}
+		q.pop();
+		nDiv--;
+		if (nDiv == 0 && !q.empty())
+		{
+			ans = q.front()->val;
+			nDiv = nAdd;
+			nAdd = 0;
+		}
+	}
+	return ans;
+}
