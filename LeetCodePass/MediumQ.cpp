@@ -811,3 +811,44 @@ int MediumQ::findBottomLeftValue(TreeNode* root) {
 	}
 	return ans;
 }
+
+/*
+ *	Question : 515. 在每个树行中找最大值
+ *	Date	 : [ 2022/06/24 13:25:14 ]
+ */
+//可以用深搜，记录树的高度
+vector<int> MediumQ::largestValues(TreeNode* root) {
+	vector<int> ans;
+	int add = 0, div = 0, max = INT_MIN;
+	queue<TreeNode*> q;
+	if (root)
+	{
+		q.push(root);
+		div++;
+	}
+	while (!q.empty())
+	{
+		TreeNode* t = q.front();
+		if (t->left)
+		{
+			q.push(t->left);
+			add++;
+		}
+		if (t->right)
+		{
+			q.push(t->right);
+			add++;
+		}
+		q.pop();
+		div--;
+		max = max > t->val ? max : t->val;
+		if (div == 0)
+		{
+			div = add;
+			add = 0;
+			ans.emplace_back(max);
+			max = INT_MIN;
+		}
+	}
+	return ans;
+}

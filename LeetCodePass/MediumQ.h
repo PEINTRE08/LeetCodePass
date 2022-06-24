@@ -115,4 +115,5 @@ public:
 	vector<int> findDiagonalOrder(vector<vector<int>>& mat);
 	int findPairs(vector<int>& nums, int k);
 	int findBottomLeftValue(TreeNode * root);
+	vector<int> largestValues(TreeNode * root);
 };
