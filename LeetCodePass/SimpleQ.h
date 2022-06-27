@@ -66,12 +66,5 @@ public:
 	int findRepeatNumber(vector<int>& nums);
 	bool isUnique(string astr);
 	vector<int> diStringMatch(string s);
-	int minDeletionSize(vector<string>& strs);
-	bool isAlienSorted(vector<string>& words, string order);
-	bool isUnivalTree(TreeNode * root);
-	bool isBoomerang(vector<vector<int>>& points);
-	int heightChecker(vector<int>& heights);
-	void duplicateZeros(vector<int>& arr);
-	string defangIPaddr(string address);
 };
 
