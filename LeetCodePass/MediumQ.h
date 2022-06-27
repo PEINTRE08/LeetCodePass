@@ -1,39 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include "QHeader.h"
+#include "QStruct.h"
 
-class NestedInteger {
-public:
-	// Constructor initializes an empty nested list.
-	NestedInteger() {};
 
-	// Constructor initializes a single integer.
-	NestedInteger(int value);
 
-	// Return true if this NestedInteger holds a single integer, rather than a nested list.
-	bool isInteger() const;
-
-	// Return the single integer that this NestedInteger holds, if it holds a single integer
-	// The result is undefined if this NestedInteger holds a nested list
-	int getInteger() const;
-
-	// Set this NestedInteger to hold a single integer.
-	void setInteger(int value) {};
-
-	// Set this NestedInteger to hold a nested list and adds a nested integer to it.
-	void add(const NestedInteger &ni) {};
-
-	// Return the nested list that this NestedInteger holds, if it holds a nested list
-	// The result is undefined if this NestedInteger holds a single integer
-	const vector<NestedInteger> &getList() const;
-};
-
-/*
-*	Question : Ëæ»úÊıË÷Òı
-*	¸ø¶¨Ò»¸ö¿ÉÄÜº¬ÓĞÖØ¸´ÔªËØµÄÕûÊıÊı×é£¬ÒªÇóËæ»úÊä³ö¸ø¶¨µÄÊı×ÖµÄË÷Òı¡£ Äú¿ÉÒÔ¼ÙÉè¸ø¶¨µÄÊı×ÖÒ»¶¨´æÔÚÓÚÊı×éÖĞ¡£
-*	Date	 : [ 2022/04/25 13:37:48 ]
-*/
-//Ë®ÌÁ³éÑùx
-/*	Æ½¾ù³éÑùËã·¨ ¸ÅÂÊ£º1/k
+//æ°´å¡˜æŠ½æ ·x
+/*	å¹³å‡æŠ½æ ·ç®—æ³• æ¦‚ç‡ï¼š1/k
  *	if (nums[i] == target) {
  *		++cnt;
  *		if (rand() % cnt == 0) {
@@ -43,6 +15,11 @@ public:
 */
 class Solution {
 public:
+	/*
+	*	Question : éšæœºæ•°ç´¢å¼•
+	*	ç»™å®šä¸€ä¸ªå¯èƒ½å«æœ‰é‡å¤å…ƒç´ çš„æ•´æ•°æ•°ç»„ï¼Œè¦æ±‚éšæœºè¾“å‡ºç»™å®šçš„æ•°å­—çš„ç´¢å¼•ã€‚ æ‚¨å¯ä»¥å‡è®¾ç»™å®šçš„æ•°å­—ä¸€å®šå­˜åœ¨äºæ•°ç»„ä¸­ã€‚
+	*	Date	 : [ 2022/04/25 13:37:48 ]
+	*/
 	Solution(vector<int>& nums) {
 // 		this->nums = nums;
 		srand(time(NULL));
@@ -51,51 +28,68 @@ public:
 			mp[nums[i]].push_back(i);
 		}
 	}
-
 	int pick(int target) {
 		return mp[target].at(rand() % mp[target].size());
 	}
+
+	/*
+	 *	Question : éé‡å çŸ©å½¢ä¸­çš„éšæœºç‚¹
+	 *	ç»™å®šä¸€ä¸ªç”±éé‡å çš„è½´å¯¹é½çŸ©å½¢çš„æ•°ç»„ rects ï¼Œ
+	 *	å…¶ä¸­ rects[i] = [ai, bi, xi, yi] è¡¨ç¤º (ai, bi) æ˜¯ç¬¬ i ä¸ªçŸ©å½¢çš„å·¦ä¸‹è§’ç‚¹ï¼Œ
+	 *	(xi, yi) æ˜¯ç¬¬ i ä¸ªçŸ©å½¢çš„å³ä¸Šè§’è§’ç‚¹ã€‚è®¾è®¡ä¸€ä¸ªç®—æ³•æ¥éšæœºæŒ‘é€‰ä¸€ä¸ªè¢«æŸä¸€çŸ©å½¢è¦†ç›–çš„æ•´æ•°ç‚¹ã€‚
+	 *	çŸ©å½¢å‘¨é•¿ä¸Šçš„ç‚¹ä¹Ÿç®—åšæ˜¯è¢«çŸ©å½¢è¦†ç›–ã€‚æ‰€æœ‰æ»¡è¶³è¦æ±‚çš„ç‚¹å¿…é¡»ç­‰æ¦‚ç‡è¢«è¿”å›ã€‚
+	 *	åœ¨ä¸€ä¸ªç»™å®šçš„çŸ©å½¢è¦†ç›–çš„ç©ºé—´å†…ä»»ä½•æ•´æ•°ç‚¹éƒ½æœ‰å¯èƒ½è¢«è¿”å›ã€‚
+	 *	è¯·æ³¨æ„Â ï¼Œæ•´æ•°ç‚¹æ˜¯å…·æœ‰æ•´æ•°åæ ‡çš„ç‚¹ã€‚
+	 *	å®ç°Â SolutionÂ ç±»:
+	 *	Solution(int[][] rects)Â ç”¨ç»™å®šçš„çŸ©å½¢æ•°ç»„Â rects åˆå§‹åŒ–å¯¹è±¡ã€‚
+	 *	int[] pick()Â è¿”å›ä¸€ä¸ªéšæœºçš„æ•´æ•°ç‚¹ [u, v] åœ¨ç»™å®šçš„çŸ©å½¢æ‰€è¦†ç›–çš„ç©ºé—´å†…ã€‚
+	 *
+	 *	Date	 : [ 2022/06/09 10:02:45 ]
+	 */
+	Solution(vector<vector<int>>& rects) {
+		srand(time(NULL));
+		this->nums = rects;
+// 		this->rects = rects;
+// 		preS.push_back(0);
+// 		for (auto& rec : rects)
+// 		{
+// 			int x1 = rec[0], y1 = rec[1], x2 = rec[2], y2 = rec[3];
+// 			preS.push_back(preS.back() + (x2 - x1 + 1) * (y2 - y1 + 1));
+// 		}
+	}
+	vector<int> pick() {
+// 		int w = rand() % preS.back() + 1;
+// 		int l = 0, r = preS.size() - 1;
+// 		while (l < r)
+// 		{
+// 			int mid = (l + r) >> 1;
+// 			if (preS[mid] < w)
+// 				l = mid + 1;
+// 			else
+// 				r = mid;
+// 		}
+// 		--l;
+// 		int x1 = rects[l][0], y1 = rects[l][1], x2 = rects[l][2], y2 = rects[l][3];
+// 		return{ x1 + rand() % (x2 - x1 + 1), y1 + rand() % (y2 - y1 + 1) };
+		int len = this->nums.size();
+		int index = -1, cur = 0, curSum = 0;
+		for (int i = 0; i < len; ++i)
+		{
+			int x1 = this->nums[i][0], y1 = this->nums[i][1], x2 = this->nums[i][2], y2 = this->nums[i][3];
+			cur = (x2 - x1 + 1) * (y2 - y1 + 1);
+			curSum += cur;
+			if (rand() % curSum < cur)
+				index = i;
+		}
+		vector<int> ans(2);
+		ans[0] = rand() % (this->nums[index][2] - this->nums[index][0] + 1) + this->nums[index][0];
+		ans[1] = rand() % (this->nums[index][3] - this->nums[index][1] + 1) + this->nums[index][1];
+		return ans;
+	}
 private:
-// 	vector<int> nums;
+	vector<int> preS;
+	vector<vector<int>> nums;
 	unordered_map<int, vector<int>> mp;
-};
-
-// Definition for a QuadTree node.
-class Node {
-public:
-	bool val;
-	bool isLeaf;
-	Node* topLeft;
-	Node* topRight;
-	Node* bottomLeft;
-	Node* bottomRight;
-
-	Node() {
-		val = false;
-		isLeaf = false;
-		topLeft = NULL;
-		topRight = NULL;
-		bottomLeft = NULL;
-		bottomRight = NULL;
-	}
-
-	Node(bool _val, bool _isLeaf) {
-		val = _val;
-		isLeaf = _isLeaf;
-		topLeft = NULL;
-		topRight = NULL;
-		bottomLeft = NULL;
-		bottomRight = NULL;
-	}
-
-	Node(bool _val, bool _isLeaf, Node* _topLeft, Node* _topRight, Node* _bottomLeft, Node* _bottomRight) {
-		val = _val;
-		isLeaf = _isLeaf;
-		topLeft = _topLeft;
-		topRight = _topRight;
-		bottomLeft = _bottomLeft;
-		bottomRight = _bottomRight;
-	}
 };
 
 // Definition for a binary tree node.
@@ -107,10 +101,10 @@ struct TreeNode {
 };
 
 /*
-*	Question : ĞòÁĞ»¯ºÍ·´ĞòÁĞ»¯¶ş²æËÑË÷Ê÷
-*	ĞòÁĞ»¯ÊÇ½«Êı¾İ½á¹¹»ò¶ÔÏó×ª»»ÎªÒ»ÏµÁĞÎ»µÄ¹ı³Ì£¬ÒÔ±ãËü¿ÉÒÔ´æ´¢ÔÚÎÄ¼ş»òÄÚ´æ»º³åÇøÖĞ£¬»òÍ¨¹ıÍøÂçÁ¬½ÓÁ´Â·´«Êä£¬ÒÔ±ãÉÔºóÔÚÍ¬Ò»¸ö»òÁíÒ»¸ö¼ÆËã»ú»·¾³ÖĞÖØ½¨¡£
-*	Éè¼ÆÒ»¸öËã·¨À´ĞòÁĞ»¯ºÍ·´ĞòÁĞ»¯ ¶ş²æËÑË÷Ê÷ ¡£ ¶ÔĞòÁĞ»¯/·´ĞòÁĞ»¯Ëã·¨µÄ¹¤×÷·½Ê½Ã»ÓĞÏŞÖÆ¡£ ÄúÖ»ĞèÈ·±£¶ş²æËÑË÷Ê÷¿ÉÒÔĞòÁĞ»¯Îª×Ö·û´®£¬²¢ÇÒ¿ÉÒÔ½«¸Ã×Ö·û´®·´ĞòÁĞ»¯Îª×î³õµÄ¶ş²æËÑË÷Ê÷¡£
-*	±àÂëµÄ×Ö·û´®Ó¦¾¡¿ÉÄÜ½ô´Õ¡£
+*	Question : åºåˆ—åŒ–å’Œååºåˆ—åŒ–äºŒå‰æœç´¢æ ‘
+*	åºåˆ—åŒ–æ˜¯å°†æ•°æ®ç»“æ„æˆ–å¯¹è±¡è½¬æ¢ä¸ºä¸€ç³»åˆ—ä½çš„è¿‡ç¨‹ï¼Œä»¥ä¾¿å®ƒå¯ä»¥å­˜å‚¨åœ¨æ–‡ä»¶æˆ–å†…å­˜ç¼“å†²åŒºä¸­ï¼Œæˆ–é€šè¿‡ç½‘ç»œè¿æ¥é“¾è·¯ä¼ è¾“ï¼Œä»¥ä¾¿ç¨ååœ¨åŒä¸€ä¸ªæˆ–å¦ä¸€ä¸ªè®¡ç®—æœºç¯å¢ƒä¸­é‡å»ºã€‚
+*	è®¾è®¡ä¸€ä¸ªç®—æ³•æ¥åºåˆ—åŒ–å’Œååºåˆ—åŒ– äºŒå‰æœç´¢æ ‘ ã€‚ å¯¹åºåˆ—åŒ–/ååºåˆ—åŒ–ç®—æ³•çš„å·¥ä½œæ–¹å¼æ²¡æœ‰é™åˆ¶ã€‚ æ‚¨åªéœ€ç¡®ä¿äºŒå‰æœç´¢æ ‘å¯ä»¥åºåˆ—åŒ–ä¸ºå­—ç¬¦ä¸²ï¼Œå¹¶ä¸”å¯ä»¥å°†è¯¥å­—ç¬¦ä¸²ååºåˆ—åŒ–ä¸ºæœ€åˆçš„äºŒå‰æœç´¢æ ‘ã€‚
+*	ç¼–ç çš„å­—ç¬¦ä¸²åº”å°½å¯èƒ½ç´§å‡‘ã€‚
 *
 *	Date	 : [ 2022/05/11 14:37:48 ]
 */
@@ -179,4 +173,16 @@ public:
 	int maxRotateFunction(vector<int>& nums);
 	vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights);
 	Node * construct(vector<vector<int>>& grid);
+	bool oneEditAway(string first, string second);
+	int minMoves2(vector<int>& nums);
+	vector<int> findRightInterval(vector<vector<int>>& intervals);
+	int findSubstringInWraproundString(string p);
+	bool makesquare(vector<int>& matchsticks);
+	TreeNode * deleteNode(TreeNode * root, int key);
+	int minEatingSpeed(vector<int>& piles, int h);
+	vector<int> findDiagonalOrder(vector<vector<int>>& mat);
+	int findPairs(vector<int>& nums, int k);
+	int findBottomLeftValue(TreeNode * root);
+	vector<int> largestValues(TreeNode * root);
+	TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p);
 };

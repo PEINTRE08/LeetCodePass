@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "QHeader.h"
-
+#include "QStruct.h"
 
 /*
  *	Question : 剑指 Offer 09. 用两个栈实现队列
@@ -46,6 +46,7 @@ private:
 	stack<int> sAppend, sDelete;
 };
 
+
 class SimpleQ
 {
 public:
@@ -65,5 +66,12 @@ public:
 	int findRepeatNumber(vector<int>& nums);
 	bool isUnique(string astr);
 	vector<int> diStringMatch(string s);
+	int minDeletionSize(vector<string>& strs);
+	bool isAlienSorted(vector<string>& words, string order);
+	bool isUnivalTree(TreeNode * root);
+	bool isBoomerang(vector<vector<int>>& points);
+	int heightChecker(vector<int>& heights);
+	void duplicateZeros(vector<int>& arr);
+	string defangIPaddr(string address);
 };
 
