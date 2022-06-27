@@ -116,4 +116,5 @@ public:
 	int findPairs(vector<int>& nums, int k);
 	int findBottomLeftValue(TreeNode * root);
 	vector<int> largestValues(TreeNode * root);
+	TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p);
 };

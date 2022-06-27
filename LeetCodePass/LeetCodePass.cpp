@@ -21,10 +21,9 @@ int main()
 // 	string s = "I speak Goat Latin";
 // 	uint32_t n = 4294967293;
 
-	SimpleQ Spl;
-	Spl.duplicateZeros(nums);
-// 	MediumQ Mdm;
-// 	HardQ hard;
+// 	SimpleQ Spl;
+	MediumQ Mdm;
+	Mdm.construct(nums);
 
 	system("pause");
     return 0;
